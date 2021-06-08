@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
+import { Todo } from "./Types";
+import "./App.css";
 
-function App() {
+//初期値：Todo型配列
+let initialState: Todo[] = [];
+
+const App: React.FC = () => {
+  const [todoList, setTodoList] = useState(initialState); //可能な限り初期値を与える(型推論されるため)
+
+  useEffect(() => {
+    const todo: string | null = localStorage.getItem("todos"); //ローカルストレージからとってくるデータはstringないしはnullのため
+    if (todo !== null) {
+      console.log("入ってます");
+      setTodoList(JSON.parse(todo));
+    } else {
+      console.log("nullです"); //null確認のため
+    }
+    //アンマウント時に実行
+    return () => {
+      setTodoList([]);
+    };
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Todoリスト(TypeScript+React)</h2>
+      <TodoList todoList={todoList} setTodoList={setTodoList} />
+      <AddTodo todoList={todoList} setTodoList={setTodoList} />
     </div>
   );
-}
+};
 
 export default App;
