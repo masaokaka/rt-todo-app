@@ -9,7 +9,7 @@ interface Props {
 const AddTodo = ({ todoList, setTodoList }: Props) => {
   const [todo, setTodo] = useState("");
 
-  //解説用
+  //inputのvalueを関数処理の中で受け取りたい場合
   // const doSetTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   setTodo(e.target.value);
   // };
@@ -19,18 +19,18 @@ const AddTodo = ({ todoList, setTodoList }: Props) => {
     return Math.random().toString(32).substring(2);
   };
 
+  //Todoを追加する(button)
   const submit = () => {
     const newTodo: Todo = {
       id: createRandomId(),
       title: todo,
       done: false,
     };
-    //Todoをローカルストレージに保存
     localStorage.setItem("todos", JSON.stringify([...todoList, newTodo]));
     setTodoList([...todoList, newTodo]);
-    //Inputタグのvalueを空文字にする
     setTodo("");
   };
+
   return (
     <div>
       <input
