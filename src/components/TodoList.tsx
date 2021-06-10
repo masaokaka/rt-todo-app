@@ -9,7 +9,7 @@ interface Props {
 
 const TodoList = ({ todoList, setTodoList }:Props) => {
   //Todoの完了、未完了を切り替える(CheckBox)
-  const doneTodo = (todo: Todo) => {
+  const doneTodo = (todo: Todo):void => {
     const newTodoList = todoList.map((td) =>
       td.id === todo.id ? { ...todo, done: !todo.done } : td
     );
@@ -18,7 +18,7 @@ const TodoList = ({ todoList, setTodoList }:Props) => {
   };
 
   //Todoを削除する
-  const deleteTodo = (todo: Todo) => {
+  const deleteTodo = (todo: Todo):void => {
     const newTodoList = todoList.filter((td) => td.id !== todo.id);
     localStorage.setItem("todos", JSON.stringify(newTodoList));
     setTodoList(newTodoList);

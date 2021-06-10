@@ -7,10 +7,10 @@
       "esnext"
     ],
     "allowJs": false,//.jsや.jsxで書いているファイルもコンパイル対象に含まれるようになる。部分的にjsで書いているときなどはtrueにする。
-    "skipLibCheck": true,//型定義ファイルの型チェックをスキップする
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true, //厳密な型チェックをオプション
+    "strict": true, //厳密な型チェックを指定するオプション
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext", //使用するJSモジュールを指定している。モジュールの違いによって出力されるJSのコンパイル結果が変わる
@@ -20,7 +20,7 @@
     "noEmit": true,
     "jsx": "react-jsx" //tsxファイルをjsxやjsにコンパイルする際の出力形式を指定する。
   },
-  "include": [
+  "include": [  //コンパイルする対象のファイルを指定します。
     "src"
   ]
 }
