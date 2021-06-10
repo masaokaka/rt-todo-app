@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
+    "target": "es5",  //コンパイルするJSファイルのバージョンを指定
+    "lib": [ //使用したいライブラリを指定。基本はtargetを指定しておけば暗黙的に必要なライブラリも使用できる。ただし、libに何かを加えた場合は必要なものは全てlibに記述する必要が出てくるので注意
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
+    "allowJs": false,//.jsや.jsxで書いているファイルもコンパイル対象に含まれるようになる。部分的にjsで書いているときなどはtrueにする。
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": true, //厳密な型チェックを指定するオプション
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "esnext", //使用するJSモジュールを指定している。モジュールの違いによって出力されるJSのコンパイル結果が変わる
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx" //tsxファイルをjsxやjsにコンパイルする際の出力形式を指定する。
   },
-  "include": [
+  "include": [  //コンパイルする対象のファイルを指定します。
     "src"
   ]
 }
